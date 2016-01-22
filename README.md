@@ -1,4 +1,7 @@
 # hps-java-junit
+
+ [![Build Status](https://travis-ci.org/hiptest/hps-java-junit.svg?branch=master)](https://travis-ci.org/hiptest/hps-java-junit) [Java/JUnit](https://github.com/hiptest/hps-java-junit)
+
 Hiptest publisher samples with Java/JUnit
 
 In this repository you'll find tests generated in junit format from [Hiptest](https://hiptest.net), using [Hiptest publisher](https://github.com/hiptest/hiptest-publisher).
