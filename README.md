@@ -1,6 +1,6 @@
 # hps-java-junit
 
- [![Build Status](https://travis-ci.org/hiptest/hps-java-junit.svg?branch=master)](https://travis-ci.org/hiptest/hps-java-junit) [Java/JUnit](https://github.com/hiptest/hps-java-junit)
+ [![Build Status](https://travis-ci.org/hiptest/hps-java-junit.svg?branch=master)](https://travis-ci.org/hiptest/hps-java-junit)
 
 Hiptest publisher samples with Java/JUnit
 
