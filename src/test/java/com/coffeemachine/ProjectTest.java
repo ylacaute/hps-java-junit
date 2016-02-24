@@ -5,26 +5,61 @@ import junit.framework.TestCase;
 public class ProjectTest extends TestCase {
 
     public Actionwords actionwords = new Actionwords();
-    public void simpleUse(String lang, String readyMessage) {
-        // Given I start the coffee machine "<lang>"
-        actionwords.iStartTheCoffeeMachine(lang);
+    // Well, sometimes, you just get a coffee.
+    public void testSimpleUse() {
+        // Given the coffee machine is started
+        actionwords.theCoffeeMachineIsStarted();
         // When I take a coffee
         actionwords.iTakeACoffee();
         // Then coffee should be served
         actionwords.coffeeShouldBeServed();
     }
-
-    public void testSimpleUseEnglishUid72159d85483d4de6b34cf72d99e2501f() {
-        simpleUse("en", "Ready");
+    // Simple scenario showing that after 50 coffees, the "Fill tank" message is displayed but it is still possible to have coffee until the tank is fully empty.
+    public void testWaterRunsAway() {
+        // Given the coffee machine is started
+        actionwords.theCoffeeMachineIsStarted();
+        // When fifty coffees have been taken without filling the tank
+        actionwords.fiftyCoffeesHaveBeenTakenWithoutFillingTheTank();
+        // Then message "Fill tank" should be displayed
+        actionwords.messageMessageShouldBeDisplayed("Fill tank");
+        // When I take a coffee
+        actionwords.iTakeACoffee();
+        // Then coffee should be served
+        actionwords.coffeeShouldBeServed();
+        // When I take "10" coffees
+        actionwords.iTakeCoffeeNumberCoffees(10);
+        // Then coffee should not be served
+        actionwords.coffeeShouldNotBeServed();
+        // And message "Fill tank" should be displayed
+        actionwords.messageMessageShouldBeDisplayed("Fill tank");
+        // When I fill the water tank
+        actionwords.iFillTheWaterTank();
+        // Then message "Ready" should be displayed
+        actionwords.messageMessageShouldBeDisplayed("Ready");
     }
-
-    public void testSimpleUseFrenchUid7ef427bad71a4685af0d512a32ad3dc0() {
-        simpleUse("fr", "Pret");
+    // Simple scenario showing that after 38 coffees, the message "Fill beans" is displayed but it is possible to take two coffees until there is no more beans.
+    public void testBeansRunOut() {
+        // Given the coffee machine is started
+        actionwords.theCoffeeMachineIsStarted();
+        // When thirty eight coffees are taken without filling beans
+        actionwords.thirtyEightCoffeesAreTakenWithoutFillingBeans();
+        // Then coffee should be served
+        actionwords.coffeeShouldBeServed();
+        // And message "Fill beans" should be displayed
+        actionwords.messageMessageShouldBeDisplayed("Fill beans");
+        // When I take "2" coffees
+        actionwords.iTakeCoffeeNumberCoffees(2);
+        // Then coffee should be served
+        actionwords.coffeeShouldBeServed();
+        // And message "Fill beans" should be displayed
+        actionwords.messageMessageShouldBeDisplayed("Fill beans");
+        // When I take a coffee
+        actionwords.iTakeACoffee();
+        // Then coffee should not be served
+        actionwords.coffeeShouldNotBeServed();
     }
-
-
-
-    public void testFullGroundsDoesNotBlockCoffeeUidf18f2e0d3bd44a10ac8536713305773c() {
+    // You keep getting coffee even if the "Empty grounds" message is displayed. That said it's not a fantastic idea, you'll get ground everywhere when you'll decide to empty it.
+    public void testFullGroundsDoesNotBlockCoffee() {
         // Given the coffee machine is started
         actionwords.theCoffeeMachineIsStarted();
         // When I take "29" coffees
@@ -48,50 +83,6 @@ public class ProjectTest extends TestCase {
         // And message "Empty grounds" should be displayed
         actionwords.messageMessageShouldBeDisplayed("Empty grounds");
     }
-
-    public void testWaterRunsAwayUidfdf9a09710604b619e5312ef147339e5() {
-        // Given the coffee machine is started
-        actionwords.theCoffeeMachineIsStarted();
-        // When fifty coffees have been taken without filling the tank
-        actionwords.fiftyCoffeesHaveBeenTakenWithoutFillingTheTank();
-        // Then message "Fill tank" should be displayed
-        actionwords.messageMessageShouldBeDisplayed("Fill tank");
-        // When I take a coffee
-        actionwords.iTakeACoffee();
-        // Then coffee should be served
-        actionwords.coffeeShouldBeServed();
-        // When I take "10" coffees
-        actionwords.iTakeCoffeeNumberCoffees(10);
-        // Then coffee should not be served
-        actionwords.coffeeShouldNotBeServed();
-        // And message "Fill tank" should be displayed
-        actionwords.messageMessageShouldBeDisplayed("Fill tank");
-        // When I fill the water tank
-        actionwords.iFillTheWaterTank();
-        // Then message "Ready" should be displayed
-        actionwords.messageMessageShouldBeDisplayed("Ready");
-    }
-
-    public void testBeansRunOutUid6974201f5e554eeaa0ee69c1955a95f5() {
-        // Given the coffee machine is started
-        actionwords.theCoffeeMachineIsStarted();
-        // When thirty eight coffees are taken without filling beans
-        actionwords.thirtyEightCoffeesAreTakenWithoutFillingBeans();
-        // Then coffee should be served
-        actionwords.coffeeShouldBeServed();
-        // And message "Fill beans" should be displayed
-        actionwords.messageMessageShouldBeDisplayed("Fill beans");
-        // When I take "2" coffees
-        actionwords.iTakeCoffeeNumberCoffees(2);
-        // Then coffee should be served
-        actionwords.coffeeShouldBeServed();
-        // And message "Fill beans" should be displayed
-        actionwords.messageMessageShouldBeDisplayed("Fill beans");
-        // When I take a coffee
-        actionwords.iTakeACoffee();
-        // Then coffee should not be served
-        actionwords.coffeeShouldNotBeServed();
-    }
     public void messagesAreBasedOnLanguage(String lang, String readyMessage) {
         // When I start the coffee machine "<lang>"
         actionwords.iStartTheCoffeeMachine(lang);
@@ -99,17 +90,17 @@ public class ProjectTest extends TestCase {
         actionwords.messageMessageShouldBeDisplayed(readyMessage);
     }
 
-    public void testMessagesAreBasedOnLanguageEnglishUidcd9aed377f6a4c49aec4208bd2a23bbd() {
+    public void testMessagesAreBasedOnLanguageEnglish() {
         messagesAreBasedOnLanguage("en", "Ready");
     }
 
-    public void testMessagesAreBasedOnLanguageFrenchUidf7f6e5b2eb014d56ba39e325012aaa28() {
+    public void testMessagesAreBasedOnLanguageFrench() {
         messagesAreBasedOnLanguage("fr", "Pret");
     }
 
 
 
-    public void testNoMessagesAreDisplayedWhenMachineIsShutDownUidb9908e9be49c4759ba69f98a9869eaca() {
+    public void testNoMessagesAreDisplayedWhenMachineIsShutDown() {
         // Given the coffee machine is started
         actionwords.theCoffeeMachineIsStarted();
         // When I shutdown the coffee machine

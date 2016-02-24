@@ -22,7 +22,7 @@ Update tests
 
 To update the tests:
 
-    hiptest-publisher -c junit.config --only=tests
+    hiptest-publisher -c junit.conf --only=tests
 
 The tests are generated in [``src/test/java/com/coffeemachine/ProjectTest.java``](https://github.com/hiptest/hiptest-publisher-samples/blob/master/java/src/test/java/com/coffeemachine/ProjectTest.java)
 
