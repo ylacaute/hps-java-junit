@@ -6,6 +6,9 @@ import static junit.framework.Assert.assertTrue;
 
 public class Actionwords {
     public CoffeeMachine sut = new CoffeeMachine();
+    public boolean handleWater = false;
+    public boolean handleBeans = false;
+    public boolean handleGrounds = false;
 
     public void iStartTheCoffeeMachine() {
         iStartTheCoffeeMachine("en");
@@ -51,6 +54,18 @@ public class Actionwords {
         while ((coffeeNumber > 0)) {
             iTakeACoffee();
             coffeeNumber = coffeeNumber - 1;
+
+            if (handleWater) {
+                iFillTheWaterTank();
+            }
+
+            if (handleBeans) {
+                iFillTheBeansTank();
+            }
+
+            if (handleGrounds) {
+                iEmptyTheCoffeeGrounds();
+            }
         }
     }
 
@@ -58,19 +73,30 @@ public class Actionwords {
         iStartTheCoffeeMachine();
     }
 
-    public void fiftyCoffeesHaveBeenTakenWithoutFillingTheTank() {
-        iTakeCoffeeNumberCoffees(30);
-        iFillTheBeansTank();
-        iEmptyTheCoffeeGrounds();
-        iTakeCoffeeNumberCoffees(20);
-        iFillTheBeansTank();
-        iEmptyTheCoffeeGrounds();
+    public void iHandleWaterTank() {
+        handleWater = true;
     }
 
-    public void thirtyEightCoffeesAreTakenWithoutFillingBeans() {
-        iTakeCoffeeNumberCoffees(37);
-        iEmptyTheCoffeeGrounds();
-        iFillTheWaterTank();
-        iTakeACoffee();
+    public void iHandleBeans() {
+        handleBeans = true;
+    }
+
+    public void iHandleCoffeeGrounds() {
+        handleGrounds = true;
+    }
+
+    public void iHandleEverythingExceptTheWaterTank() {
+        iHandleCoffeeGrounds();
+        iHandleBeans();
+    }
+
+    public void iHandleEverythingExceptTheBeans() {
+        iHandleWaterTank();
+        iHandleCoffeeGrounds();
+    }
+
+    public void iHandleEverythingExceptTheGrounds() {
+        iHandleWaterTank();
+        iHandleBeans();
     }
 }
