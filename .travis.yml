@@ -11,4 +11,4 @@ script:
   - mvn package
 
 after_script:
-  - hiptest-publisher -c junit.conf -p target/surefire-reports/TEST-com.coffeemachine.ProjectTest.xml --test-run-id=1358
+  - hiptest-publisher -c junit.conf -p target/surefire-reports/TEST-com.coffeemachine.*.xml --test-run-id=1358
