@@ -1,4 +1,4 @@
-package com.coffeemachine.error_messages;
+package com.coffeemachine.display_errors;
 
 import junit.framework.TestCase;
 import com.coffeemachine.Actionwords;

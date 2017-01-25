@@ -1,5 +1,8 @@
 package com.coffeemachine;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
@@ -10,11 +13,11 @@ public class Actionwords {
     public boolean handleBeans = false;
     public boolean handleGrounds = false;
 
-    public void iStartTheCoffeeMachine() {
-        iStartTheCoffeeMachine("en");
+    public void iStartTheCoffeeMachineUsingLanguageLang() {
+        iStartTheCoffeeMachineUsingLanguageLang("en");
     }
 
-    public void iStartTheCoffeeMachine(String lang) {
+    public void iStartTheCoffeeMachineUsingLanguageLang(String lang) {
         sut.start(lang);
     }
 
@@ -70,7 +73,7 @@ public class Actionwords {
     }
 
     public void theCoffeeMachineIsStarted() {
-        iStartTheCoffeeMachine();
+        iStartTheCoffeeMachineUsingLanguageLang();
     }
 
     public void iHandleWaterTank() {
@@ -98,5 +101,23 @@ public class Actionwords {
     public void iHandleEverythingExceptTheGrounds() {
         iHandleWaterTank();
         iHandleBeans();
+    }
+
+    public void displayedMessageIs(String freeText) {
+        messageMessageShouldBeDisplayed(freeText);
+    }
+
+    public void iSwitchToSettingsMode() {
+        sut.showSettings();
+    }
+
+    public void settingsShouldBe(String datatable) {
+        Map<String,String> settings = new HashMap<String, String>();
+        for (String line : datatable.split("\n")) {
+            String[] cells = line.split("\\|");
+            settings.put(cells[1].trim(), cells[2].trim());
+        }
+
+        assertEquals(sut.getSettings(), settings);
     }
 }
