@@ -8,7 +8,7 @@ before_install:
   - hiptest-publisher -c junit.conf --only=tests --test-run-id=306953
 
 script:
-  - mvn package
+  - mvn clean package
 
 after_script:
   - hiptest-publisher -c junit.conf  -p "target/surefire-reports/TEST-com.coffeemachine.*.xml" --test-run-id=306953
