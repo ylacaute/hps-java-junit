@@ -19,12 +19,15 @@ The SUT is a (not that much) simple coffee machine. You start it, you ask for a 
 Update tests
 -------------
 
+You must first retrieve the test-run id (Tests runs tab, look at the URL, as described in the CI tutorial).
 
 To update the tests:
 
-    hiptest-publisher -c junit.conf --only=tests
+    hiptest-publisher -c junit.conf --only=tests --test-run-id=<TEST_RUN_ID>
 
 The tests are generated in [``src/test/java/com/coffeemachine/ProjectTest.java``](https://github.com/hiptest/hps-java-junit/blob/master/java/src/test/java/com/coffeemachine/ProjectTest.java)
+
+If present, the .travis.yml will be automatically updated.
 
 Run tests
 ---------
