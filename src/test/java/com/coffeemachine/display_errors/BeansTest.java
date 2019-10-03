@@ -32,10 +32,10 @@ public class BeansTest extends TestCase {
         actionwords.coffeeShouldBeServedYeahMan();
         // When I take a coffee
         actionwords.iTakeACoffee();
-        // Then coffee should not be served
-        actionwords.coffeeShouldNotBeServed();
         // And message "Fill beans" should be displayed
         actionwords.messageMessageShouldBeDisplayed("Fill beans");
+        // Then coffee should not be served
+        actionwords.coffeeShouldNotBeServed();
     }
     //
     // Tags: priority:high
