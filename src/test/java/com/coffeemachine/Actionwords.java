@@ -29,7 +29,11 @@ public class Actionwords {
         assertEquals(sut.message(), message);
     }
 
-    public void coffeeShouldBeServed() {
+    public void unNouveauStep() {
+        System.out.println("Un step qui ne sert a rien");
+    }
+
+    public void coffeeShouldBeServedYeahMan() {
         assertTrue(sut.coffeeServed);
     }
 

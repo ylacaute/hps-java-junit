@@ -6,6 +6,7 @@ public class BadUsageTest extends TestCase {
 
     public Actionwords actionwords = new Actionwords();
     // You keep getting coffee even if the "Empty grounds" message is displayed. That said it's not a fantastic idea, you'll get ground everywhere when you'll decide to empty it.
+    // Tags: priority:low
     public void testFullGroundsDoesNotBlockCoffee() {
         // Given the coffee machine is started
         actionwords.theCoffeeMachineIsStarted();
@@ -15,7 +16,9 @@ public class BadUsageTest extends TestCase {
         actionwords.iTakeCoffeeNumberCoffees(50);
         // Then message "Empty grounds" should be displayed
         actionwords.messageMessageShouldBeDisplayed("Empty grounds");
-        // And coffee should be served
-        actionwords.coffeeShouldBeServed();
+        // And un nouveau step
+        actionwords.unNouveauStep();
+        // And coffee should be served (yeah man)
+        actionwords.coffeeShouldBeServedYeahMan();
     }
 }

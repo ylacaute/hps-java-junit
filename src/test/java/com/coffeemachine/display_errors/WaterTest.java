@@ -15,29 +15,32 @@ public class WaterTest extends TestCase {
         actionwords.iHandleEverythingExceptTheWaterTank();
     }
 
-
+    //
+    // Tags: priority:high
     public void testMessageFillWaterTankIsDisplayedAfter50CoffeesAreTaken() {
-        // When I take "50" coffees
-        actionwords.iTakeCoffeeNumberCoffees(50);
+        // When I take "60" coffees
+        actionwords.iTakeCoffeeNumberCoffees(60);
         // Then message "Fill tank" should be displayed
         actionwords.messageMessageShouldBeDisplayed("Fill tank");
     }
-
+    //
+    // Tags: priority:low
     public void testItIsPossibleToTake10CoffeesAfterTheMessageFillWaterTankIsDisplayed() {
-        // Given I take "60" coffees
+        // When I take "60" coffees
         actionwords.iTakeCoffeeNumberCoffees(60);
-        // Then coffee should be served
-        actionwords.coffeeShouldBeServed();
+        // Then coffee should be served (yeah man)
+        actionwords.coffeeShouldBeServedYeahMan();
         // When I take a coffee
         actionwords.iTakeACoffee();
         // Then coffee should not be served
         actionwords.coffeeShouldNotBeServed();
     }
-
+    //
+    // Tags: priority:high
     public void testWhenTheWaterTankIsFilledTheMessageDisappears() {
-        // Given I take "55" coffees
+        // When I take "55" coffees
         actionwords.iTakeCoffeeNumberCoffees(55);
-        // When I fill the water tank
+        // And I fill the water tank
         actionwords.iFillTheWaterTank();
         // Then message "Ready" should be displayed
         actionwords.messageMessageShouldBeDisplayed("Ready");
