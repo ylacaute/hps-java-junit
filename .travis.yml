@@ -5,11 +5,10 @@ before_install:
   - rvm install 2.2
   - rvm use 2.2
   - gem install hiptest-publisher
-  - hiptest-publisher -c junit.conf --only=tests
+  - hiptest-publisher -c junit.conf --only=tests --test-run-id=306953
 
 script:
   - mvn clean package
 
 after_script:
-  - hiptest-publisher -c junit.conf  -p "target/surefire-reports/TEST-com.coffeemachine.*.xml" 
-  
+  - hiptest-publisher -c junit.conf  -p "target/surefire-reports/TEST-com.coffeemachine.*.xml" --test-run-id=306953
