@@ -18,7 +18,7 @@ public class BadUsageTest extends TestCase {
         actionwords.messageMessageShouldBeDisplayed("Empty grounds");
         // And un nouveau step
         actionwords.unNouveauStep();
-        // And coffee should be served (yeah man)
-        actionwords.coffeeShouldBeServedYeahMan();
+        // And coffee should be served
+        actionwords.coffeeShouldBeServed();
     }
 }

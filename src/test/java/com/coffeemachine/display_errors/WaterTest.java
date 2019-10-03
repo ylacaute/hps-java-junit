@@ -28,8 +28,8 @@ public class WaterTest extends TestCase {
     public void testItIsPossibleToTake10CoffeesAfterTheMessageFillWaterTankIsDisplayed() {
         // When I take "60" coffees
         actionwords.iTakeCoffeeNumberCoffees(60);
-        // Then coffee should be served (yeah man)
-        actionwords.coffeeShouldBeServedYeahMan();
+        // Then coffee should be served
+        actionwords.coffeeShouldBeServed();
         // When I take a coffee
         actionwords.iTakeACoffee();
         // Then coffee should not be served

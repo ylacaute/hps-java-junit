@@ -12,7 +12,7 @@ public class ServeCoffeeTest extends TestCase {
         actionwords.theCoffeeMachineIsStarted();
         // When I take a coffee
         actionwords.iTakeACoffee();
-        // Then coffee should be served (yeah man)
-        actionwords.coffeeShouldBeServedYeahMan();
+        // Then coffee should be served
+        actionwords.coffeeShouldBeServed();
     }
 }

@@ -28,8 +28,8 @@ public class BeansTest extends TestCase {
     public void testItIsPossibleToTake40CoffeesBeforeThereIsReallyNoMoreBeans() {
         // When I take "40" coffees
         actionwords.iTakeCoffeeNumberCoffees(40);
-        // Then coffee should be served (yeah man)
-        actionwords.coffeeShouldBeServedYeahMan();
+        // Then coffee should be served
+        actionwords.coffeeShouldBeServed();
         // When I take a coffee
         actionwords.iTakeACoffee();
         // And message "Fill beans" should be displayed
